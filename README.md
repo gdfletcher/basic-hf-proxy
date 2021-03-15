@@ -4,7 +4,7 @@ Software language: Fortran (90+)
 
 ### Overview 
 
-Implementations of quantum chemistry methods typically depend on a choice for the integral commputation method, each with its particular performance characteristics. 
+Implementations of quantum chemistry methods typically depend on a choice for the integral computation method. There are many integral methods and each has its particular performance characteristics. 
 This proxy application aims to simulate the compute load and data-movement of the kernel of the Hartree-Fock method in a way that is independent of the particular integral method, and with a view to GPU offloading.
 
 ### Objective
