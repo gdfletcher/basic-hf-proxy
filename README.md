@@ -39,7 +39,7 @@ This varies the compute load via integral screening with closer spacing giving h
 
 
 ### Current Test Set Input Choices
-The He atoms are arranged on a regular grid.
+Helium atoms are arranged on a regular 3D grid.
 The He...He distance is chosen to be 1.4 A, approximating the C-C bond length, and yielding a cost complexity of around 2.6. 
 A separation of 1.0 A would be closer to bond-to-hydrogen (OH,CH,NH...).
 1.2A represents a compromise, yielding a complexity of around 2.9. 
@@ -69,7 +69,7 @@ A separation of 1.0 A would be closer to bond-to-hydrogen (OH,CH,NH...).
 | basic-hf-proxy-mpi+omp.f90 | Fortran 90+ compiler supporting OpenMP, MPI library  | 
 | basic-hf-proxy-mpi+gpu.f90 | Fortran 90+ compiler supporting OpenMP 5.0 or higher, MPI library  | 
  
-Note that the 'mpi+gpu' version has not been tested (TBD).  
+Note that the 'mpi+gpu' version has not been tested yet (TBD).  
 
 In the root dir, 
 
@@ -90,7 +90,7 @@ $ mpifort basic-hf-proxy-mpi.f90
 
 MPI parallel version, with MPI library
 
-$ gfortran basic-hf-proxy-mpi.f90 -L[path to MPI lib]
+$ gfortran basic-hf-proxy-mpi.f90 -L[path to MPI lib] -I[path to mpif.h] 
 
 OpenMP parallel version
 
@@ -142,7 +142,9 @@ Agreement across different hardware, compilers, etc, to 6 places is typical.
 
 ## Figure-of-Merit (FOM)
 
-Sample performance data with various hardware and execution modes. 
+Sample performance data with various hardware and execution modes (default optimization levels). 
+The purpose here is not to present optimal performance figures but rather to suggest how improved might be improved. 
+
 
 #### GPU Speedup on Nvidia A100 
 
