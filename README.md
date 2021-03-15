@@ -108,7 +108,7 @@ See also Nsight Compute profile, ./docs/ncu.profile.bhfp-gpu.he64
 
 
 
-## Run Examples
+## Run Examples (see ./tests) 
 
 Sequential version
 
@@ -124,7 +124,7 @@ $ export OMP_NUM_THREADS=2
 
 $ ./a.out < he8
 
-#### Small regression tests  
+#### Small regression tests  (see ./tests) 
 |no. He atoms | 2-el. E/AU to 6 places |
 |  :-:        |     :-:                |
 |   4 |    4.050176 | 
