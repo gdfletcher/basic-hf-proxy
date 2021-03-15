@@ -47,26 +47,26 @@ A separation of 1.0 A would be closer to bond-to-hydrogen (OH,CH,NH...).
 
 ### Software Overview 
 
-|Proxy App Versions         |Description  | 
-|basic-hf-proxy-seq.f90     |Plain sequential version  | 
-|basic-hf-proxy-mpi.f90     |MPI parallel version  | 
-|basic-hf-proxy-omp.f90     |Multi-threaded parallel, using OpenMP  | 
-|basic-hf-proxy-gpu.f90     |Single GPU offload, using OMP5.0  | 
-|basic-hf-proxy-mpi+omp.f90 |Combining MPI for outer loops, OMP for inner loops  | 
-|basic-hf-proxy-mpi+gpu.f90 |MPI, with GPU offload for inner loops  | 
+| Proxy App Versions         | Description  | 
+| basic-hf-proxy-seq.f90     | Plain sequential version  | 
+| basic-hf-proxy-mpi.f90     | MPI parallel version  | 
+| basic-hf-proxy-omp.f90     | Multi-threaded parallel, using OpenMP  | 
+| basic-hf-proxy-gpu.f90     | Single GPU offload, using OMP5.0  | 
+| basic-hf-proxy-mpi+omp.f90 | Combining MPI for outer loops, OMP for inner loops  | 
+| basic-hf-proxy-mpi+gpu.f90 | MPI, with GPU offload for inner loops  | 
 
 
 
 ## Build instructions
 
-|Code                       |Dependencies  | 
-|basic-hf-proxy-seq.f90     |Fortran 90+ compiler  | 
-|basic-hf-proxy-mpi.f90     |Fortran 90+ compiler, MPI library  | 
-|basic-hf-proxy-omp.f90     |Fortran 90+ compiler supporting OpenMP  | 
-|basic-hf-proxy-gpu.f90     |Fortran 90+ compiler supporting OpenMP 5.0 or higher  | 
-|basic-hf-proxy-mpi+omp.f90 |Fortran 90+ compiler supporting OpenMP, MPI library  | 
-|basic-hf-proxy-mpi+gpu.f90 |Fortran 90+ compiler supporting OpenMP 5.0 or higher, MPI library  | 
-
+| Code                       | Dependencies  | 
+| basic-hf-proxy-seq.f90     | Fortran 90+ compiler  | 
+| basic-hf-proxy-mpi.f90     | Fortran 90+ compiler, MPI library  | 
+| basic-hf-proxy-omp.f90     | Fortran 90+ compiler supporting OpenMP  | 
+| basic-hf-proxy-gpu.f90     | Fortran 90+ compiler supporting OpenMP 5.0 or higher  | 
+| basic-hf-proxy-mpi+omp.f90 | Fortran 90+ compiler supporting OpenMP, MPI library  | 
+| basic-hf-proxy-mpi+gpu.f90 | Fortran 90+ compiler supporting OpenMP 5.0 or higher, MPI library  | 
+ 
 Note that the 'mpi+gpu' version has not been tested (TBD).  
 
 In the root dir, 
@@ -112,7 +112,8 @@ $ export OMP_NUM_THREADS=2
 $ ./a.out < he8
 
 #### Small regression tests  
-|no. He atoms | 2-el. E/AU to 6 places | 
+|no. He atoms | 2-el. E/AU to 6 places |
+|  :-:        |     :-:                |
 |   4 |    4.050176 | 
 |   8 |   11.585213 | 
 |  16 |   36.902417 | 
@@ -149,17 +150,17 @@ Sample performance data with various hardware and execution modes.
 ### How to Validate
 #### Example using GAMESS
 
-*1. See comments in the proxy app code about reading a density matrix from a file, rebuild the proxy executable as appropriate.
+* 1. See comments in the proxy app code about reading a density matrix from a file, rebuild the proxy executable as appropriate.
 
-*2. Convert the input to a GAMESS .inp file.
+* 2. Convert the input to a GAMESS .inp file.
  - see examples (he4.inp, he8.inp)
  - be sure to include  NPRINT=5  so that GAMESS prints the density matrix
 
-*3. Run GAMESS.
+* 3. Run GAMESS.
 
-*4. Extract the final density matrix from the GAMESS output and convert it to a simple triangular format, appending it to the input file for the proxy app.
+* 4. Extract the final density matrix from the GAMESS output and convert it to a simple triangular format, appending it to the input file for the proxy app.
 
-*5. Run the new proxy executable with the new input, and compare output to the line matching-
+* 5. Run the new proxy executable with the new input, and compare output to the line matching-
   'ELECTRON-ELECTRON POTENTIAL ENERGY'
    in the GAMESS output.
 
