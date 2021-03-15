@@ -20,10 +20,10 @@ While the number of atoms is a primary cost factor, it is through such screening
 
 To simulate the compute load, a cluster of helium-like atoms each with a single contracted (s-type) gaussian type function (orbital) occupied by a pair of opposite-spin electrons, is used. 
 The function cost can be varied by changing the expansion length while the number and positions of the atoms can also be varied (see below).
-As mentioned above, the compute load increases as N^4, where N is the number of helium-like atoms. 
-Screening typically reduces the cost to around N^3. 
+As mentioned above, the compute load increases as N<sup>4</sup>, where N is the number of helium-like atoms. 
+Screening typically reduces the cost to O(N<sup>3</sup>). 
 The individual integral cost is, likewise, fourth-order in the orbital expansion length(s) but very long expansions (>>30) are not typical of routine calculations (see below). 
-Memory requirements and data-movement scale as N^2. 
+Memory requirements and data-movement scale as O(N<sup>2</sup>). 
 
 
 ### Variables
@@ -39,7 +39,7 @@ This varies the compute load via integral screening with closer spacing giving h
 
 
 ### Current Test Set Input Choices
-He atoms are arranged on a regular grid.
+The He atoms are arranged on a regular grid.
 The He...He distance is chosen to be 1.4 A, approximating the C-C bond length, and yielding a cost complexity of around 2.6. 
 A separation of 1.0 A would be closer to bond-to-hydrogen (OH,CH,NH...).
 1.2A represents a compromise, yielding a complexity of around 2.9. 
@@ -133,7 +133,7 @@ $ ./a.out < he8
 | 256 | 4204.804478   | 
 | 512 |14131.752017   | 
 
-Agreement to 6 places is typical across different hardware, compilers, etc. 
+Agreement across different hardware, compilers, etc, to 6 places is typical.
 
 
 ## Figure-of-Merit (FOM)
@@ -142,15 +142,15 @@ Sample performance data with various hardware and execution modes.
 
 #### GPU Speedup on Nvidia A100 
 
-<img src="./docs/gpuSpeedup.pdf" height="350"/> 
+<img src="./docs/gpuSpeedup.png" height="350"/> 
 
 #### MPI with OpenMP multi-threading (on Skylake node) 
 
-<img src="./docs/mpi+ompSkylake.pdf" height="350"/> 
+<img src="./docs/mpi+ompSkylake.png" height="350"/> 
 
 #### MPI parallelism on KNL cluster (ALCF "Theta" platform) 
 
-<img src="./docs/mpiThetaKNL.pdf" height="350"/> 
+<img src="./docs/mpiThetaKNL.png" height="350"/> 
 
 
 ### How to Validate
