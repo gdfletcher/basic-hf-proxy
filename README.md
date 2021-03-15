@@ -48,6 +48,7 @@ A separation of 1.0 A would be closer to bond-to-hydrogen (OH,CH,NH...).
 ### Software Overview 
 
 | Proxy App Versions         | Description  | 
+|  :-:        |     :-:                |
 | basic-hf-proxy-seq.f90     | Plain sequential version  | 
 | basic-hf-proxy-mpi.f90     | MPI parallel version  | 
 | basic-hf-proxy-omp.f90     | Multi-threaded parallel, using OpenMP  | 
@@ -60,6 +61,7 @@ A separation of 1.0 A would be closer to bond-to-hydrogen (OH,CH,NH...).
 ## Build instructions
 
 | Code                       | Dependencies  | 
+|  :-:        |     :-:                |
 | basic-hf-proxy-seq.f90     | Fortran 90+ compiler  | 
 | basic-hf-proxy-mpi.f90     | Fortran 90+ compiler, MPI library  | 
 | basic-hf-proxy-omp.f90     | Fortran 90+ compiler supporting OpenMP  | 
@@ -70,8 +72,11 @@ A separation of 1.0 A would be closer to bond-to-hydrogen (OH,CH,NH...).
 Note that the 'mpi+gpu' version has not been tested (TBD).  
 
 In the root dir, 
+
 $ mkdir bin 
+
 $ make 
+
 
 ### Specific build examples 
  
@@ -122,6 +127,7 @@ $ ./a.out < he8
 #### Large regression tests  
 
 |no. He atoms | 2-el. E/AU    | 
+|  :-:        |     :-:                |
 |  64 |  419.672121   | 
 | 128 | 1300.093626   | 
 | 256 | 4204.804478   | 
