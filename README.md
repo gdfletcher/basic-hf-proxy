@@ -159,9 +159,7 @@ Sample performance data with various hardware and execution modes.
 
 * 1. See comments in the proxy app code about reading a density matrix from a file, rebuild the proxy executable as appropriate.
 
-* 2. Convert the input to a GAMESS .inp file.
- - see examples (he4.inp, he8.inp)
- - be sure to include  NPRINT=5  so that GAMESS prints the density matrix
+* 2. Convert the input to a GAMESS .inp file, see examples (he4.inp, he8.inp), be sure to include  NPRINT=5  so that GAMESS prints the density matrix
 
 * 3. Run GAMESS.
 
