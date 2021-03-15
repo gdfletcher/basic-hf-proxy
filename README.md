@@ -114,6 +114,7 @@ $ mpirun -n 2 ./a.out < he4
 OMP version
 
 $ export OMP_NUM_THREADS=2
+
 $ ./a.out < he8
 
 #### Small regression tests  
