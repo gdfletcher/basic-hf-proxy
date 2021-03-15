@@ -4,10 +4,12 @@ Software language: Fortran (90+)
 
 ### Overview 
 
-Hartree-Fock is considered the 'entry-level' method of quantum chemistry, with computational characteristics similar to those of Density Functional Theory. 
+Hartree-Fock is considered the 'entry-level' method of quantum chemistry. 
+Its computational characteristics are similar to those of Density Functional Theory. 
 As with many quantum chemistry methods, the implementation typically depends on a choice for the integral computation method. 
 There are many integral methods and each has its particular performance characteristics. 
-This proxy application aims to simulate the compute load and data-movement of the kernel of the Hartree-Fock method in a way that is independent of the particular integral method, and with a view to GPU offloading.
+This proxy application aims to simulate the compute load and data-movement of the kernel of Hartree-Fock in a way that is independent of the particular integral method. 
+GPU offloading is also a key aim.
 
 ### Objective
 
