@@ -1,0 +1,51 @@
+==PROF== Connected to process 250230 (/gpfs/mira-home/fletcher/proxies/basic-hf/bhfp-gpu)
+==PROF== Profiling "nvkernel_MAIN__F1L121_1_" - 1: 0%....50%....100% - 13 passes
+ 2e- energy=     419.6721208574465     
+==PROF== Disconnected from process 250230
+[250230] bhfp-gpu@127.0.0.1
+  nvkernel_MAIN__F1L121_1_, 2021-Feb-27 19:35:43, Context 1, Stream 20
+    Section: GPU Speed Of Light
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    DRAM Frequency                                                           cycle/nsecond                           1.21
+    SM Frequency                                                             cycle/nsecond                           1.09
+    Elapsed Cycles                                                                   cycle                  1,802,452,256
+    Memory [%]                                                                           %                          11.55
+    SOL DRAM                                                                             %                           0.00
+    Duration                                                                        second                           1.65
+    SOL L1/TEX Cache                                                                     %                          19.90
+    SOL L2 Cache                                                                         %                           0.03
+    SM Active Cycles                                                                 cycle               1,046,173,881.11
+    SM [%]                                                                               %                          18.01
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    WRN   This kernel exhibits low compute throughput and memory bandwidth utilization relative to the peak performance 
+          of this device. Achieved compute throughput and/or memory bandwidth below 60.0% of peak typically indicate    
+          latency issues. Look at Scheduler Statistics and Warp State Statistics for potential reasons.                 
+
+    Section: Launch Statistics
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Size                                                                                                        512
+    Grid Size                                                                                                         108
+    Registers Per Thread                                                   register/thread                            128
+    Shared Memory Configuration Size                                                 Kbyte                           8.19
+    Driver Shared Memory Per Block                                             Kbyte/block                           1.02
+    Dynamic Shared Memory Per Block                                            Kbyte/block                           4.72
+    Static Shared Memory Per Block                                              byte/block                              0
+    Threads                                                                         thread                         55,296
+    Waves Per SM                                                                                                        1
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    WRN   If you execute __syncthreads() to synchronize the threads of a block, it is recommended to have more than the 
+          achieved 1 blocks per multiprocessor. This way, blocks that aren't waiting for __syncthreads() can keep the   
+          hardware busy.                                                                                                
+
+    Section: Occupancy
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Block Limit SM                                                                   block                             32
+    Block Limit Registers                                                            block                              1
+    Block Limit Shared Mem                                                           block                             29
+    Block Limit Warps                                                                block                              4
+    Theoretical Active Warps per SM                                                   warp                             16
+    Theoretical Occupancy                                                                %                             25
+    Achieved Occupancy                                                                   %                          25.00
+    Achieved Active Warps Per SM                                                      warp                          16.00
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
