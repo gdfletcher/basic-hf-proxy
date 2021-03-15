@@ -100,6 +100,9 @@ For GPU offload, eg. with pgf90 (supporting OMP5.0+)
 
 $ pgf90 -mp=gpu -Mcuda=cc80,cuda11.2 basic-hf-proxy-gpu.f90
 
+See Nsight Compute profile, ./docs/ncu.profile.bhfp-gpu.he64 
+
+
 
 ## Run Examples
 
@@ -144,6 +147,8 @@ Sample performance data with various hardware and execution modes.
 #### GPU Speedup on Nvidia A100 
 
 <img src="./docs/gpuSpeedup.png" height="350"/> 
+
+See Nsight Compute profile, ./docs/ncu.profile.bhfp-gpu.he64 
 
 #### MPI with OpenMP multi-threading (on Skylake node) 
 
