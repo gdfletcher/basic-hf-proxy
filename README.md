@@ -2,7 +2,7 @@
 
 Software language: Fortran (90+)
 
-### Overview 
+### Background 
 
 Hartree-Fock is considered the 'entry-level' method of quantum chemistry. 
 Its computational characteristics are similar to those of Density Functional Theory. 
@@ -147,8 +147,7 @@ Agreement across different hardware, compilers, etc, to 6 places is typical.
 ## Figure-of-Merit (FOM)
 
 Sample performance data with various hardware and execution modes (default optimization levels). 
-The purpose here is not to present optimal performance figures but rather to suggest how improved might be improved. 
-
+Please note that the proxy has not been optimized for any particular platform. 
 
 #### GPU Speedup on Nvidia A100 
 
