@@ -104,7 +104,7 @@ For GPU offload, eg. with pgf90 (supporting OMP5.0+)
 
 $ pgf90 -mp=gpu -Mcuda=cc80,cuda11.2 basic-hf-proxy-gpu.f90
 
-See also Nsight Compute profile, ./docs/ncu.profile.bhfp-gpu.he64 
+See also the Nsight Compute profile, ./docs/ncu.profile.bhfp-gpu.he64 
 
 
 
@@ -153,7 +153,7 @@ Please note that the proxy has not been optimized for any particular platform.
 
 <img src="./docs/gpuSpeedup.png" height="350"/> 
 
-See also Nsight Compute profile, ./docs/ncu.profile.bhfp-gpu.he64 
+See also the Nsight Compute profile, ./docs/ncu.profile.bhfp-gpu.he64 
 
 #### MPI with OpenMP multi-threading (on Skylake node) 
 
@@ -166,7 +166,7 @@ See also Nsight Compute profile, ./docs/ncu.profile.bhfp-gpu.he64
 
 ###  Memory Footprint 
 
-Memory Required = 2*Ngauss + 3*Natom + 3.5Natom<sup>2</sup>
+Memory Required = 2Ngauss + 3Natom + 3.5Natom<sup>2</sup>
 
 Examples 
 
