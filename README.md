@@ -164,6 +164,20 @@ See also Nsight Compute profile, ./docs/ncu.profile.bhfp-gpu.he64
 <img src="./docs/mpiThetaKNL.png" height="350"/> 
 
 
+###  Memory Footprint 
+
+Memory Required = 2*Ngauss + 3*Natom + 3.5Natom<sup>2</sup>
+
+Examples 
+
+| Ngauss | Natom |  Memory/DP words = Mb | 
+|  :-:   |  :-:  |  :-:    |  
+|   3    |  128  |   57734  =  0.46 Mb | 
+|   3    |  256  |  230150  =  1.84 Mb | 
+|   3    |  512  |  919046  =  7.35 Mb | 
+|  30    | 1024  | 3673148  = 29.39 Mb | 
+
+
 ### How to Validate
 #### Example using GAMESS
 
