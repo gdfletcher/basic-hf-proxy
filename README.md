@@ -53,8 +53,8 @@ For these reasons, routine Hartree-Fock applications seldom vary the cutoff.
 ### Current Test Set Input Choices
 
 Helium atoms are arranged on a regular 3D grid.
-In most of the inputs the He...He distance is fixed at 1.4 A. 
-A separation of 1.4A approximates the C-C bond length while a separation of 1.0 A would be closer to a bond-to-hydrogen (OH,CH,NH...), for example.
+In most of the inputs the He...He distance is fixed at 1.4 Angstroms (A). 
+A separation of 1.4A approximates the C-C bond length while a separation of 1.0A would be closer to a bond-to-hydrogen (OH,CH,NH...), for example.
 He...He=1.4A yields a cost-complexity of O(N<sup>2.6</sup>), typical of many Hartree-Fock codes. 
 Another value, 1.2A, yields a complexity of O(N<sup>2.9</sup>). 
 
