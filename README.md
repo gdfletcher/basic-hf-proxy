@@ -63,9 +63,10 @@ Another value, 1.2A, yields a complexity of O(N<sup>2.9</sup>).
 
 Software language: Fortran (90+)
 
-The essential code is relatively small (~200 lines, with comments), and each run mode currently offered is captured in a separate code (see below). 
-In this way, much preprocessing clutter can be avoided, allowing each run mode to be studied and modified separately within an easy-to-read code.
-This choice takes inspiration from the Particle-in-Cell codes developed at UCLA (https://idre.ucla.edu/hpc/parallel-plasma-pic-codes) for educational purposes. 
+The essential code is relatively small (~200 lines, with comments). 
+Each run mode currently offered is captured in a separate code (see below). 
+By having separate easy-to-read codes, each run mode can be studied and modified separately, and much preprocessing clutter can be avoided. 
+This strategy takes inspiration from the Particle-in-Cell codes developed at UCLA for educational purposes (https://idre.ucla.edu/hpc/parallel-plasma-pic-codes). 
 
 
 | Proxy App Version          | Description  | 
