@@ -8,7 +8,7 @@ As with many quantum chemistry methods, the implementation typically depends on 
 However, there are many integral methods available, each method has unique performance characteristics, and the integral codes themselves tend to be very large. 
 
 On the other hand, proxy applications aim to capture a given theory method without the clutter of a major package to enable a rapid assessment of its performance characteristics on new and emerging hardware. 
-To this end, the present proxy application uses a simplified integral code to allow the major compute load and data-movement of Hartree-Fock to be studied in different run modes, spanning sequential, parallel, and including GPU offloading. 
+To this end, the present proxy application uses a simplified integral code to allow the major compute load and data-movement of Hartree-Fock to be studied in different run modes spanning sequential and parallel execution, including GPU offloading. 
 
 
 ### Algorithm
@@ -165,7 +165,7 @@ Agreement across different hardware, compilers, etc, to 6 places is typical.
 ## Figure-of-Merit (FOM)
 
 Sample performance data with various hardware and execution modes (default optimization levels). 
-Please note that the proxy has not been optimized for any particular platform. 
+Please note that the proxy codes have not been hand-optimized for any particular platform. 
 
 #### GPU Speedup on Nvidia A100 
 
