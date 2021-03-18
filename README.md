@@ -65,7 +65,7 @@ Software language: Fortran (90+)
 
 The essential code is relatively small (~200 lines, with comments). 
 Each run mode currently offered is captured in a separate code (see below). 
-By having separate easy-to-read codes, each run mode can be studied and modified separately, and much preprocessing clutter can be avoided. 
+The provision of separate easy-to-read codes avoids much preprocessing clutter, and each run mode can be studied and modified independently. 
 This strategy takes inspiration from the Particle-in-Cell codes developed at UCLA for educational purposes (https://idre.ucla.edu/hpc/parallel-plasma-pic-codes). 
 
 
