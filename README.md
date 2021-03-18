@@ -10,6 +10,7 @@ However, there are many integral methods available, each method has unique perfo
 On the other hand, proxy applications aim to capture a given theory method without the clutter of a major package to enable a rapid assessment of its performance characteristics on new and emerging hardware. 
 To this end, the present proxy application uses a simplified integral code to allow the major compute load and data-movement of Hartree-Fock to be studied in different run modes, spanning sequential, parallel, and including GPU offloading. 
 
+
 ### Algorithm
 
 The kernel of Hartree-Fock for a given molecular system computes the electron-repulsion term of the Fock operator. 
@@ -18,6 +19,7 @@ The cost increases as the fourth power of the problem size.
 However, the magnitude of an integral declines with distance between the centers and screening (based on the Schwarz Inequality) can be used to avoid small terms. 
 Furthermore, within the integral calculations the gaussian-product factors can also be tested to avoid small terms. 
 While the number of atoms is a primary cost factor, it is through such screening that the atomic positions also influence the overall cost.
+
 
 ### Model
 
@@ -49,10 +51,12 @@ For these reasons, routine Hartree-Fock applications seldom vary the cutoff.
 
 
 ### Current Test Set Input Choices
+
 Helium atoms are arranged on a regular 3D grid.
-The He...He distance is chosen to be 1.4 A, approximating the C-C bond length, and yielding a cost complexity of around 2.6. 
-A separation of 1.0 A would be closer to bond-to-hydrogen (OH,CH,NH...).
-1.2A represents a compromise, yielding a complexity of around 2.9. 
+In most of the inputs the He...He distance is fixed at 1.4 A. 
+A separation of 1.4A approximates the C-C bond length while a separation of 1.0 A would be closer to a bond-to-hydrogen (OH,CH,NH...), for example.
+He...He=1.4A yields a cost-complexity of O(N<sup>2.6</sup>), typical of many Hartree-Fock codes. 
+Another value, 1.2A, yields a complexity of O(N<sup>2.9</sup>). 
 
 
 ### Software Overview 
