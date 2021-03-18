@@ -1,17 +1,16 @@
 # Basic Hartree-Fock Proxy Application 
 
-Software language: Fortran (90+)
-
 ### Background 
 
 Hartree-Fock is considered the 'entry-level' method of quantum chemistry. 
 Its computational characteristics are similar to those of Density Functional Theory. 
 As with many quantum chemistry methods, the implementation typically depends on a choice for the integral computation method. 
-There are many integral methods and each has its particular performance characteristics. 
-This proxy application aims to simulate the compute load and data-movement of the kernel of Hartree-Fock in a way that is independent of the particular integral method. 
-GPU offloading is also a key aim.
+However, there are many integral methods available, each method has unique performance characteristics, and the integral codes themselves tend to be very large. 
 
-### Objective
+On the other hand, proxy applications aim to capture a given theory method without the clutter of a major package to enable a rapid assessment of its performance characteristics on new and emerging hardware. 
+To this end, the present proxy application uses a simplified integral code to allow the major compute load and data-movement of Hartree-Fock to be studied in different run modes, spanning sequential, parallel, and including GPU offloading. 
+
+### Algorithm
 
 The kernel of Hartree-Fock for a given molecular system computes the electron-repulsion term of the Fock operator. 
 Electron repulsion integrals over gaussian-type functions located on different atomic centers (four per integral) are computed and contracted with elements of the (square) density matrix before being summed to elements of the (square) Fock matrix. 
@@ -33,13 +32,20 @@ Memory requirements and data-movement scale as O(N<sup>2</sup>).
 ### Variables
 
 In order to simulate different compute loads, the following are variable- 
-* Number of helium-like atoms ('natom' in the code) 
+* The number of helium-like atoms (input, called 'natom' in the code).
 Determines the memory requirements (order of the Fock and Density matrices), the data-movement and the primary compute loads. 
-* Contraction length of atomic orbital ('ngauss' in the code)
+* The contraction length of atomic orbital (input, 'ngauss' in the code). 
 Determines the per-atom compute load. 
-The gaussian exponents and contraction coefficients can be entirely fabricated, but taking values from a real basis set yields a more realistic calculation. 
-* Arrangement of atoms (the input geometry)
-This varies the compute load via integral screening with closer spacing giving higher complexity. 
+* The (input) gaussian exponents and contraction coefficients. 
+This amounts to a specification of the 'basis set' for the atoms. 
+The values can affect cost via the internal integral screening with large exponents on different centers and/or small coefficients causing more integral terms to be skipped. 
+The contraction coefficients are normalized internally allowing arbitrary values to be input. 
+* Molecular geometry (input). 
+The cartesian coordinates of each atom are input in conventional angstrom units. 
+The relative positioning of atoms varies the compute load via integral screening with closer spacing giving higher complexity. 
+* The screening cutoff ('dtol', can be varied by editing the code). 
+The cutoff affects both the compute load and the energy with coarser screening (larger value) causing more terms to be skipped giving a lower overall cost but a less accurate energy, and vice versa. 
+For these reasons, routine Hartree-Fock applications seldom vary the cutoff. 
 
 
 ### Current Test Set Input Choices
@@ -51,7 +57,14 @@ A separation of 1.0 A would be closer to bond-to-hydrogen (OH,CH,NH...).
 
 ### Software Overview 
 
-| Proxy App Versions         | Description  | 
+Software language: Fortran (90+)
+
+The essential code is relatively small (~200 lines, with comments), and each run mode currently offered is captured in a separate code (see below). 
+In this way, much preprocessing clutter can be avoided, allowing each run mode to be studied and modified separately within an easy-to-read code.
+This choice takes inspiration from the Particle-in-Cell codes developed at UCLA (https://idre.ucla.edu/hpc/parallel-plasma-pic-codes) for educational purposes. 
+
+
+| Proxy App Version          | Description  | 
 |  :-:        |     :-:                |
 | basic-hf-proxy-seq.f90     | Plain sequential version  | 
 | basic-hf-proxy-mpi.f90     | MPI parallel version  | 
