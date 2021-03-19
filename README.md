@@ -2,7 +2,7 @@
 
 ### Background 
 
-Hartree-Fock is considered the 'entry-level' method of quantum chemistry. 
+Hartree-Fock is considered the entry-level method of quantum chemistry. 
 Its computational characteristics are similar to those of Density Functional Theory. 
 As with many quantum chemistry methods, the implementation typically depends on a choice for the integral computation method. 
 However, there are many integral methods available, each method has unique performance characteristics, and the integral codes themselves tend to be very large. 
@@ -17,17 +17,18 @@ The kernel of Hartree-Fock for a given molecular system computes the electron-re
 Electron repulsion integrals over gaussian-type functions located on different atomic centers (four per integral) are computed and contracted with elements of the (square) density matrix before being summed to elements of the (square) Fock matrix. 
 The cost increases as the fourth power of the problem size. 
 However, the magnitude of an integral declines with distance between the centers and screening (based on the Schwarz Inequality) can be used to avoid small terms. 
-Furthermore, within the integral calculations the gaussian-product factors can also be tested to avoid small terms. 
-While the number of atoms is a primary cost factor, it is through such screening that the atomic positions also influence the overall cost.
+Furthermore, within the integral calculations, the gaussian-product factors are also tested to avoid small terms. 
+While the number of atoms is the primary cost factor, the atomic positions also influence the compute load through integral screening.
 
 
 ### Model
 
-To simulate the compute load, a cluster of helium-like atoms each with a single contracted (s-type) gaussian type function (orbital) occupied by a pair of opposite-spin electrons, is used. 
-The function cost can be varied by changing the expansion length while the number and positions of the atoms can also be varied (see below).
+The compute load is simulated using a cluster of helium-like atoms.
+At each atom a single function - or 'orbital' - occupied by a pair of opposite-spin electrons is located.
+Each orbital is contracted over a set of s-type gaussian functions. 
 As mentioned above, the compute load increases as N<sup>4</sup>, where N is the number of helium-like atoms. 
 Screening typically reduces the cost to O(N<sup>3</sup>). 
-The individual integral cost is, likewise, fourth-order in the orbital expansion length(s) but very long expansions (>>30) are not typical of routine calculations (see below). 
+The individual integral cost is, likewise, fourth-order in the orbital expansion length(s) but very long expansions (>>30) are not typical of routine calculations.
 Memory requirements and data-movement scale as O(N<sup>2</sup>). 
 
 
@@ -47,7 +48,7 @@ The cartesian coordinates of each atom are input in conventional angstrom units.
 The relative positioning of atoms varies the compute load via integral screening with closer spacing giving higher complexity. 
 * The screening cutoff ('dtol', can be varied by editing the code). 
 The cutoff affects both the compute load and the energy with coarser screening (larger value) causing more terms to be skipped giving a lower overall cost but a less accurate energy, and vice versa. 
-For these reasons, routine Hartree-Fock applications seldom vary the cutoff. 
+For these reasons routine Hartree-Fock applications seldom vary the cutoff. 
 
 
 ### Current Test Set Input Choices
@@ -63,10 +64,8 @@ Another value, 1.2A, yields a complexity of O(N<sup>2.9</sup>).
 
 Software language: Fortran (90+)
 
-The essential code is relatively small (~200 lines, with comments). 
-Each run mode currently offered is captured in a separate code (see below). 
-The provision of separate easy-to-read codes avoids much preprocessing clutter, and each run mode can be studied and modified independently. 
-This strategy takes inspiration from the Particle-in-Cell codes developed at UCLA for educational purposes (https://idre.ucla.edu/hpc/parallel-plasma-pic-codes). 
+The essential algorithm is relatively small (about 200 lines, with comments) making it convenient to capture each run mode currently offered in a separate code.
+The individual codes are easier to understand (much preprocessing clutter can be avoided) and permit each run mode to be studied and modified independently. 
 
 
 | Proxy App Version          | Description  | 
@@ -159,13 +158,13 @@ $ ./a.out < he8
 | 256 | 4204.804478   | 
 | 512 |14131.752017   | 
 
-Agreement across different hardware, compilers, etc, to 6 places is typical.
+Agreement to 6 places across different hardware, compilers, etc, is typical.
 
 
 ## Figure-of-Merit (FOM)
 
 Sample performance data with various hardware and execution modes (default optimization levels). 
-Please note that the proxy codes have not been hand-optimized for any particular platform. 
+Please note that the proxy codes have NOT been hand-optimized for any particular platform/hardware/vendor at this time. 
 
 #### GPU Speedup on Nvidia A100 
 
@@ -199,16 +198,15 @@ Examples
 ### How to Validate
 #### Example using GAMESS
 
-* 1. See comments in the proxy app code about reading a density matrix from a file, rebuild the proxy executable as appropriate.
+* 1. See comments in the proxy app code about reading a density matrix from a file. Rebuild the proxy executable as appropriate.
 
-* 2. Convert the input to a GAMESS .inp file, see examples (he4.inp, he8.inp), be sure to include  NPRINT=5  so that GAMESS prints the density matrix
+* 2. Convert the desired input to a GAMESS '.inp' file (see examples, ./tests/he4.inp, he8.inp). Be sure to include  NPRINT=5  so that GAMESS prints the density matrix
 
 * 3. Run GAMESS.
 
 * 4. Extract the final density matrix from the GAMESS output and convert it to a simple triangular format, appending it to the input file for the proxy app.
 
 * 5. Run the new proxy executable with the new input, and compare output to the line matching-
-  'ELECTRON-ELECTRON POTENTIAL ENERGY'
-   in the GAMESS output.
+  'ELECTRON-ELECTRON POTENTIAL ENERGY' in the GAMESS output.
 
 
