@@ -17,15 +17,16 @@ The kernel of Hartree-Fock for a given molecular system computes the electron-re
 Electron repulsion integrals over gaussian-type functions located on different atomic centers (four per integral) are computed and contracted with elements of the (square) density matrix before being summed to elements of the (square) Fock matrix. 
 The cost increases as the fourth power of the problem size. 
 However, the magnitude of an integral declines with distance between the centers and screening (based on the Schwarz Inequality) can be used to avoid small terms. 
-Furthermore, within the integral calculations, the gaussian-product factors are also tested to avoid small terms. 
+Within the integral calculations the gaussian-product factors are also tested to avoid small terms. 
 While the number of atoms is the primary cost factor, the atomic positions also influence the compute load through integral screening.
 
 
 ### Model
 
 The compute load is simulated using a cluster of helium-like atoms.
-At each atom a single function - or 'orbital' - occupied by a pair of opposite-spin electrons is located.
+Each atom hosts a single function - or 'orbital' - occupied by a pair of opposite-spin electrons.
 Each orbital is contracted over a set of s-type gaussian functions. 
+The compute load can be varied through the number and positioning of the atoms, together with the orbital contraction length, as described in more detail below. 
 As mentioned above, the compute load increases as N<sup>4</sup>, where N is the number of helium-like atoms. 
 Screening typically reduces the cost to O(N<sup>3</sup>). 
 The individual integral cost is, likewise, fourth-order in the orbital expansion length(s) but very long expansions (>>30) are not typical of routine calculations.
@@ -54,10 +55,8 @@ For these reasons routine Hartree-Fock applications seldom vary the cutoff.
 ### Current Test Set Input Choices
 
 Helium atoms are arranged on a regular 3D grid.
-In most of the inputs the He...He distance is fixed at 1.4 Angstroms (A). 
-A separation of 1.4A approximates the C-C bond length while a separation of 1.0A would be closer to a bond-to-hydrogen (OH,CH,NH...), for example.
-He...He=1.4A yields a cost-complexity of O(N<sup>2.6</sup>), typical of many Hartree-Fock codes. 
-Another value, 1.2A, yields a complexity of O(N<sup>2.9</sup>). 
+In most of the inputs the He...He distance is fixed at 1.4 Angstroms (A) which approximates the C-C bond length and yields a cost-complexity of O(N<sup>2.6</sup>), typical of many Hartree-Fock codes. 
+Other inputs use a separation of 1.0A which is closer to the length of a bond-to-hydrogen (OH,CH,NH...) and yields a complexity of O(N<sup>2.9</sup>). 
 
 
 ### Software Overview 
