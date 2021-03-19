@@ -140,7 +140,7 @@ $ export OMP_NUM_THREADS=2
 
 $ ./a.out < he8
 
-#### Small regression tests  (see ./tests) 
+#### Small regression tests  
 |no. He atoms | 2-el. E/AU to 6 places |
 |  :-:        |     :-:                |
 |   4 |    4.050176 | 
@@ -148,7 +148,7 @@ $ ./a.out < he8
 |  16 |   36.902417 | 
 |  32 |  122.248336 | 
 
-#### Large regression tests  
+#### Larger regression tests  
 
 |no. He atoms | 2-el. E/AU    | 
 |  :-:        |     :-:                |
