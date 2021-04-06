@@ -1,4 +1,6 @@
-!  4 Dec 2020  
+! Copyright © 2021, UChicago Argonne, LLC, OPEN SOURCE LICENSE
+! See (root dir/)LICENSE.TXT 
+
 !  Basic Hartree-Fock Proxy Application,  MPI+OMP parallel version 
 !  with GPU offload 
 !  Written by Graham D. Fletcher, Computational Science Division, 

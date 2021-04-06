@@ -1,4 +1,6 @@
-!  11 feb 2021  
+! Copyright © 2021, UChicago Argonne, LLC, OPEN SOURCE LICENSE
+! See (root dir/)LICENSE.TXT 
+
 !  Basic Hartree-Fock Proxy Application,  single-offload GPU version 
 !  Written by Graham D. Fletcher, Computational Science Division, 
 !  Argonne National Laboratory 
