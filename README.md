@@ -15,10 +15,11 @@ To this end, the present proxy application uses a simplified integral code to al
 
 The kernel of Hartree-Fock for a given molecular system computes the electron-repulsion term of the Fock operator. 
 Electron repulsion integrals over gaussian-type functions located on different atomic centers (four per integral) are computed and contracted with elements of the (square) density matrix before being summed to elements of the (square) Fock matrix. 
-The cost increases as the fourth power of the problem size. 
+The cost nominally increases as the fourth power of the problem size. 
 However, the magnitude of an integral declines with distance between the centers and screening (based on the Schwarz Inequality) can be used to avoid small terms. 
 Within the integral calculations the gaussian-product factors are also tested to avoid small terms. 
-While the number of atoms is the primary cost factor, the atomic positions also influence the compute load through integral screening.
+Thus, while the number of atoms is the primary cost factor, the atomic positions also influence the compute load through integral screening.
+
 
 
 ### Model
