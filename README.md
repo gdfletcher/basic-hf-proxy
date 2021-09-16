@@ -62,7 +62,7 @@ Other inputs use a separation of 1.0A which is closer to the length of a bond-to
 
 ### Software Overview 
 
-Software language: Fortran (90+)
+Software language: Fortran (90)
 
 The essential algorithm is relatively small (about 200 lines, with comments) making it convenient to capture each run mode currently offered in a separate code.
 The individual codes are easier to understand (much preprocessing clutter can be avoided) and permit each run mode to be studied and modified independently. 
@@ -83,7 +83,7 @@ The individual codes are easier to understand (much preprocessing clutter can be
 
 | Code                       | Dependencies  | 
 |  :-:        |     :-:                |
-| basic-hf-proxy-seq.f90     | Fortran 90+ compiler  | 
+| basic-hf-proxy-seq.f90     | Fortran 90 (or higher) compiler  | 
 | basic-hf-proxy-mpi.f90     | Fortran 90+ compiler, MPI library  | 
 | basic-hf-proxy-omp.f90     | Fortran 90+ compiler supporting OpenMP  | 
 | basic-hf-proxy-gpu.f90     | Fortran 90+ compiler supporting OpenMP 5.0 or higher  | 
@@ -117,7 +117,7 @@ OpenMP parallel version
 
 $ gfortran -fopenmp basic-hf-proxy-omp.f90
 
-For GPU offload, eg. with pgf90 (supporting OMP5.0+) 
+For GPU offload, eg. with pgf90 (supporting OMP5.0, or higher) 
 
 $ pgf90 -mp=gpu -Mcuda=cc80,cuda11.2 basic-hf-proxy-gpu.f90
 
